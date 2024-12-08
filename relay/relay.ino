@@ -15,7 +15,7 @@ const unsigned long RELAY_OFF_DURATION = 2000; // 2 seconds in milliseconds
 const int MAX_RETRIES = 5;
 
 // Relay pin
-const int RELAY_PIN = 15; // TODO - change me from LED pin
+const int RELAY_PIN = 15;
 
 // Variables
 int consecutiveFailures = 0;
@@ -53,7 +53,7 @@ void loop() {
     } else {
       Serial.println("Health check failed!");
 
-      if (currentTime - lastCheckTime < BOOT_GRACE_PERIOD) {
+      if (currentTime - lastBootAttemptTime < BOOT_GRACE_PERIOD) {
         Serial.println("Boot grace period not reached yet, not treating as failure");
       }
       else {
